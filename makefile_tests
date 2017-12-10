@@ -1,0 +1,60 @@
+
+
+
+
+
+TESTS = t1 t2 t3 t4 t5 t6 t5 t7 t8 t9 t10 t11 t12 t13 t14 
+
+tests: $(TESTS)
+
+OBJS = pq.o 
+
+pq.o: pq.h pq.c
+	gcc  -c pq.c
+
+t1:  t1.c $(OBJS) header.c pqutil.c
+	gcc -g -o t1 t1.c $(OBJS)
+
+t2:  t2.c $(OBJS) header.c pqutil.c
+	gcc -g -o t2 t2.c $(OBJS)
+
+t3:  t3.c $(OBJS) header.c pqutil.c
+	gcc -g -o t3 t3.c $(OBJS)
+
+t4:  t4.c $(OBJS) header.c pqutil.c
+	gcc -g -o t4 t4.c $(OBJS)
+
+t5:  t5.c $(OBJS) header.c pqutil.c
+	gcc -g -o t5 t5.c $(OBJS)
+
+t6:  t6.c $(OBJS) header.c pqutil.c
+	gcc -g -o t6 t6.c $(OBJS)
+t7:  t7.c $(OBJS) header.c pqutil.c
+	gcc -g -o t7 t7.c $(OBJS)
+t8:  t8.c $(OBJS) header.c pqutil.c
+	gcc -g -o t8 t8.c $(OBJS)
+t9:  t9.c $(OBJS) header.c pqutil.c
+	gcc -g -o t9 t9.c $(OBJS)
+t10:  t10.c $(OBJS) header.c pqutil.c
+	gcc -g -o t10 t10.c $(OBJS)
+t11:  t11.c $(OBJS) header.c pqutil.c
+	gcc -g -o t11 t11.c $(OBJS)
+t12:  t12.c $(OBJS) header.c pqutil.c
+	gcc -g -o t12 t12.c $(OBJS)
+t13:  t13.c $(OBJS) header.c pqutil.c
+	gcc -g -o t13 t13.c $(OBJS)
+t14:  t14.c $(OBJS) header.c pqutil.c
+	gcc -g -o t14 t14.c $(OBJS)
+t15:  t15.c $(OBJS) header.c pqutil.c
+	gcc -g -o t15 t15.c $(OBJS)
+t16:  t16.c $(OBJS) header.c pqutil.c
+	gcc -g -o t16 t16.c $(OBJS)
+t17:  t17.c $(OBJS) header.c pqutil.c
+	gcc -g -o t17 t17.c $(OBJS)
+
+
+
+
+clean:
+	rm -f *.o $(TESTS)
+

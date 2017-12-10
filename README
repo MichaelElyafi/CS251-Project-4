@@ -1,0 +1,69 @@
+
+
+
+Name: Michael Elyafi
+
+Answer each of the questions below to the best of your
+ability.  If you didn't complete the part of the assignment
+relevant to a particular question, just say so.
+-----------------------------------------------
+
+Briefly describe how you modified the basic heap organization (as
+presented in class ans in section 5.9 of Aho/Ullman) to support
+the specifications for this assignment -- in particular how was
+the idea of an ID incorporated.  
+
+I made an index array that kept track of the heap array's IDs. It allowed me to
+meet the runtime requirements that called on ID as I know where its located at all times.
+I like this method the best as it was the easiest to understand and conceptualize.
+
+
+
+-----------------------------------------------
+How did your modifications above affect your implementation of
+pq_insert (vs. the standard implementation of insert)?
+
+The index array values needed to be updated as well as the heap array values during the insert/bubble up functions.
+I kept track for errors by seeing if the ID was already existing and if it was allowed to exist within the limits of the capacity.
+
+
+
+
+
+-----------------------------------------------
+How did your modifications above affect your implementation of
+pq_delete_top (vs. the standard implementation of delete_max)?
+
+For delete top I made the int *id and double *priority equal to the first real element (not 0) of the heap array.
+After that I called pq_remove_by_id on the first element id, it simplified my code a lot because I didn't have to make a whole new function.
+
+
+
+
+-----------------------------------------------
+Explain how your implementation of bst_change_priority worked,
+why it is correct and why it achieves the runtime requirement.
+
+Since I implented an index array to keep constant positions on where the current IDs are, I am able to use those
+to keep the run time requirement in check.
+My function takes in the new_priority and compares it to the index[id] priority(where the index[id] is the current position of the heap). It bubbles up/down accordingly to the conditionals.
+I avoid having linear time trying to find the right priority every time so the only thing that is changing my run time is
+bubble up/bubble down. Those are already O(log n) so the run time is correct.
+
+
+
+
+
+
+-----------------------------------------------
+How did your implementation enable O(1) runtime for pq_get_priority?
+
+
+For get priority I managed to keep it in O(1) runtime because I had an index array keep track of the id's when they were being inserted.
+With that I am able to go to that point immediately without having to traverse the PQ.
+
+
+
+
+
+

@@ -1,0 +1,9 @@
+
+#!/bin/bash
+
+  make -f makefile_tests clean 
+
+  make -f makefile_tests tests 
+
+
+

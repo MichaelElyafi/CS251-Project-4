@@ -1,0 +1,33 @@
+
+#!/bin/bash
+
+  TDIR="_TEST_RESULTS"
+
+  rm -r -f $TDIR
+
+  mkdir $TDIR
+
+  script -a $TDIR/make.log ./compile
+
+  for test in t[1-9] t1[0-9]
+  do
+        echo "running program $test" > $TDIR/$test.log
+	      script -a $TDIR/$test.log ./$test > /dev/null
+  done
+
+  cd $TDIR
+
+  echo "TESTS LISTED BELOW MAY HAVE CRASHED" > crashes
+  echo ""  > crashes
+  echo "   TA INVESTIGATION MAY BE REQUIRED" > crashes
+  grep -L TESTS_COMPLETED t*.log > crashes
+
+  grep "__SCORE" t*.log > score_summary
+
+  awk 'BEGIN{s=0; p=0;}{s=s+$3 ; p=p+$5;}END{print "\n AUTO-SCORE TOTAL:  "  s " / "  p;}' < score_summary >> score_summary
+
+  echo "  (EXPECTED MAX AUTO-SCORE: 130)" >> score_summary
+  
+  echo >> score_summary
+  echo "  (POINTS FOR README FILE NOT INCLUDED)" >> score_summary
+
